@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.eeefff.limiter.common.config.IpLimiterCommonConfiguration

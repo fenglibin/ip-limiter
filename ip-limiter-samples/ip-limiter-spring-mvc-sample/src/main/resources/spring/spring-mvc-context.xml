@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:http="http://www.springframework.org/schema/integration/http"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+        http://www.springframework.org/schema/integration 
+        http://www.springframework.org/schema/integration/spring-integration-2.0.xsd 
+	    http://www.springframework.org/schema/integration/http 
+	    http://www.springframework.org/schema/integration/http/spring-integration-http-2.1.xsd
+	    http://www.springframework.org/schema/aop
+	    http://www.springframework.org/schema/aop/spring-aop.xsd
+	    ">
+
+	<mvc:annotation-driven/>
+	<mvc:default-servlet-handler />
+	<context:property-placeholder  location="classpath:*.properties" />
+	<context:component-scan base-package="com.eeefff.limiter"></context:component-scan>
+	<!-- 启用aop -->
+	<aop:aspectj-autoproxy expose-proxy="true"></aop:aspectj-autoproxy>
+	 <mvc:interceptors>
+	 	<ref bean="ipLimiterInterceptor" />
+	</mvc:interceptors>
+</beans>

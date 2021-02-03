@@ -1,0 +1,6 @@
+spring:
+    application:
+        name: ip-limiter-spring-gateway-sample
+    cloud:
+      config:
+        enabled: false

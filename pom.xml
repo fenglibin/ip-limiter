@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.eeefff.limiter</groupId>
+    <artifactId>ip-limiter-parent</artifactId>
+    <version>1.1.3</version>
+    <packaging>pom</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>The parent project of ip-limiter</description>
+
+    <distributionManagement>
+	<repository>
+		<id>nexus-thirdparty</id>
+		<url>http://nexus.inside.imlaidian.com/nexus/content/repositories/thirdparty/</url>
+	</repository>
+	<snapshotRepository>
+		<id>nexus-snapshots</id>
+		<name>Nexus Snapshot Repository</name>
+		<url>http://nexus.inside.imlaidian.com/nexus/content/repositories/snapshots/</url>
+	</snapshotRepository>
+    </distributionManagement>
+    <modules>
+        <module>ip-limiter-common</module>
+	<module>ip-limiter-core</module>
+	<module>ip-limiter-core-web</module>
+	<module>ip-limiter-core-spring-gateway</module>
+        <module>ip-limiter-dashboard</module>
+	<module>ip-limiter-samples</module>
+    </modules>
+
+</project>

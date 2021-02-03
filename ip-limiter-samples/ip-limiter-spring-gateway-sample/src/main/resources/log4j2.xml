@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="off">
+	<!-- update at 2020-06-28 -->
+	<!-- 日志文件目录和压缩文件 优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+	<!--日志输出的格式 -->
+	<!-- %d{yyyy-MM-dd HH:mm:ss, SSS} : 日志生产时间,输出到毫秒的时间 %-5level : 输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0 %c : logger的名称(%logger) 
+		%t : 输出当前线程名称 %p : 日志输出格式 %m : 日志内容，即 logger.info("message") %n : 换行符 %C : Java类名(%F) %L : 行号 %M : 方法名 %l : 输出语句所在的行数, 包括类名、方法名、文件名、行数 
+		hostName : 本地机器名 hostAddress : 本地ip地址 -->
+
+	<Properties>
+		<Property name="fileName">logs</Property>
+		<Property name="fileGz">logs/7z</Property>
+		<Property name="PID">????</Property>
+		<Property name="LOG_EXCEPTION_CONVERSION_WORD">%xwEx</Property>
+		<Property name="LOG_LEVEL_PATTERN">%5p</Property>
+		<Property name="LOG_DATEFORMAT_PATTERN">yyyy-MM-dd HH:mm:ss.SSS</Property>
+		<Property name="CONSOLE_LOG_PATTERN">%clr{%d{${LOG_DATEFORMAT_PATTERN}}}{faint} %clr{${LOG_LEVEL_PATTERN}}
+			%clr{${sys:PID}}{magenta} %clr{-}{faint} %clr{[%15.15t]}{faint} %clr{%-36.36c{1.} %L}{cyan} %clr{:}{faint}
+			%m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</Property>
+		<property name="LOG_PATTERN">%d{${LOG_DATEFORMAT_PATTERN}} - [%traceId] ${LOG_LEVEL_PATTERN} ${sys:PID} - [%t] %-40.40c{1.}
+			%L : %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</property>
+	</Properties>
+	<Appenders>
+		<!--这个输出控制台的配置 -->
+		<Console name="console" target="SYSTEM_OUT">
+			<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+			<ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY" />
+			<!--输出日志的格式 -->
+			<PatternLayout pattern="${CONSOLE_LOG_PATTERN}" />
+		</Console>
+
+		<!--warn级别信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+		<RollingRandomAccessFile name="rollingTraceFile" fileName="${fileName}/trace.log"
+			filePattern="${fileGz}/$${date:yyyy-MM}/%d{yyyy-MM-dd}-%i.trace.gz">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<Filters>
+				<!-- 只记录trace级别信息 -->
+				<ThresholdFilter level="DEBUG" onMatch="DENY" onMismatch="NEUTRAL" />
+				<ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY" />
+
+			</Filters>
+			<!-- 指定每天的最大压缩包个数，默认7个，超过了会覆盖之前的 -->
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+
+		<!--debug级别信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+		<RollingRandomAccessFile name="rollingDebugFile" fileName="${fileName}/debug.log"
+			filePattern="${fileGz}/$${date:yyyy-MM}/%d{yyyy-MM-dd}-%i.debug.gz">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<Filters>
+				<ThresholdFilter level="INFO" onMatch="DENY" onMismatch="NEUTRAL" />
+				<ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY" />
+			</Filters>
+			<!-- 指定每天的最大压缩包个数，默认7个，超过了会覆盖之前的 -->
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+
+
+		<!--这个会打印出info和warn级别信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+		<RollingRandomAccessFile name="rollingInfoFile" fileName="${fileName}/info.log"
+			filePattern="${fileGz}/$${date:yyyy-MM}/%d{yyyy-MM-dd}-%i.info.gz">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<Filters>
+				<ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL" />
+				<ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
+			</Filters>
+			<!-- 指定每天的最大压缩包个数，默认7个，超过了会覆盖之前的 -->
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+
+
+		<!--warn级别信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+		<RollingRandomAccessFile name="rollingWarnFile" fileName="${fileName}/warn.log"
+			filePattern="${fileGz}/$${date:yyyy-MM}/%d{yyyy-MM-dd}-%i.warn.gz">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<Filters>
+				<!-- 只记录warn级别信息 -->
+				<ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL" />
+				<ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY" />
+			</Filters>
+			<!-- 指定每天的最大压缩包个数，默认7个，超过了会覆盖之前的 -->
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+
+		<!--这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+		<RollingRandomAccessFile name="rollingErrorFile" fileName="${fileName}/error.log"
+			filePattern="${fileGz}/$${date:yyyy-MM}/%d{yyyy-MM-dd}-%i.error.gz">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<Filters>
+				<!-- 只记录level及以上级别信息 -->
+				<ThresholdFilter level="FATAL" onMatch="DENY" onMismatch="NEUTRAL" />
+				<ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+			</Filters>
+			<!-- 指定每天的最大压缩包个数，默认7个，超过了会覆盖之前的 -->
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+
+	</Appenders>
+
+	<Loggers>
+		<AsyncRoot level="info" includeLocation="true">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="rollingTraceFile" />
+			<AppenderRef ref="rollingDebugFile" />
+			<AppenderRef ref="rollingInfoFile" />
+			<AppenderRef ref="rollingWarnFile" />
+			<AppenderRef ref="rollingErrorFile" />
+		</AsyncRoot>
+
+		<AsyncLogger name="com.eeefff.limiter" level="info" includeLocation="true" />
+		<AsyncLogger name="com.netflix" level="error" includeLocation="true" />
+		<AsyncLogger name="org.springframework.cloud.netflix" level="error" includeLocation="true" />
+
+
+	</Loggers>
+</Configuration>

@@ -1,0 +1,71 @@
+server:
+     port : 10002
+     error:
+       whitelabel:
+         enabled: false
+
+management:
+  health:
+    rabbit:
+      enabled: false
+  endpoint:
+    gateway:
+      enabled: true
+    health:
+      show-details: always
+      
+  endpoints:
+    web:
+      exposure:
+        include: gateway,health,info
+feign:
+  okhttp:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            #设置API网关中路由转发请求的HystrixCommand执行超时时间
+            timeoutInMilliseconds: 5000
+spring:
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      httpclient:
+        connectTimeout: 1000
+        responseTimeout: PT30S
+      routes:
+        - id: hello_test
+          uri: http://127.0.0.1:10000
+          predicates:
+            - Path=/api_hello/**
+          filters:
+            - StripPrefix=1 #
+          metadata:
+            connect-timeout: 2000
+            response-timeout: 600000
+            
+      blacklist:      
+      allowlist:
+        - /login
+        - /welcome
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+logging:
+  config: classpath:log4j2.xml
+  level:
+    root: info
+    org.springframework.web: error
+    org.netflix.loadbalancer: info             
