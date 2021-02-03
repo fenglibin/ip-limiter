@@ -28,11 +28,11 @@
 ####  **二、架构** 
  **1. 交互架构** 
 
-![ＩＰ限流平台交互架构](https://images.gitee.com/uploads/images/2020/1231/181209_ad1ef1db_306225.png "962ebe8c87cfb79393e4faaa7e50b47a (1).png")
+![ＩＰ限流平台交互架构](https://github.com/fenglibin/ip-limiter/blob/master/images/2.png)
 
  **2. 实现架构** 
 
-![IP限流平台架构图](https://images.gitee.com/uploads/images/2020/1230/174256_2b6b8f8c_306225.png "20201111144948719 (1).png")
+![IP限流平台架构图](https://github.com/fenglibin/ip-limiter/blob/master/images/3.png)
 
  **3. 系统模块** 
 
@@ -65,7 +65,7 @@
 
 用于存储全局黑名单IP的Key，存储结构为Hash，HashKey为IP，HashValue为对象com.eeefff.limiter.common.vo.BlackIpVO，其定义的字段如下：
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/181916_7ec06ae2_306225.png "c7f707069f4ee8cba555071afc437162.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/4.png)
 
 注：
 
@@ -75,7 +75,7 @@
 
 用于存储全局白名单IP的Key，存储结构为Hash，HashKey为IP，HashValue为对象com.eeefff.limiter.common.vo.WhiteIpVO，其定义的字段如下：
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/181935_423ed591_306225.png "8e94d98285f75dbcee6b5dbfd1daa1a9.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/5.png)
 
 注：
 
@@ -85,7 +85,7 @@
 
 用于存储所有接入了IP限流平台的应用客户端的每分钟的访问统计汇总的Key，存储结构为Hash，HashKey为代表访问的分钟，HashValue为对象List，com.eeefff.limiter.common.vo.AccessVO定义的字段如下：
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/181952_2768bfae_306225.png "f9629ac5adb233a90a82686825374848.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/6.png)
 
 注：
 
@@ -97,7 +97,7 @@
 
 用于存储全局IP QPS设置的Key，存储结构为Hash，HashKey为IP，HashValue为对象com.eeefff.limiter.common.vo.IpLimitVO，其定义的字段如下：
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/182017_514cc4cc_306225.png "bb44e9662ec695a2632ea2d538a17240.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/7.png)
 
 注：
 
@@ -107,7 +107,7 @@
 
 用于存储注册到IP限流平台管理控制台的Key，存储结构为Hash，HashKey为应用名称，HashValue为对象Map，用于存储该应用所有注册的客户端，Map的Key为应用客户端的IP+端口，com.eeefff.limiter.common.vo.Client对定义的字段如下：
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/182034_dc06f189_306225.png "46b585047d9f13b93bdbb3a044fc789c.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/8.png)
 
  **6. ip-limiter-dashboard-master** 
 
@@ -130,7 +130,7 @@
 
  **１）功能模块** 
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/192521_c5de6140_306225.png "56e31f7c1a610c65d3716ab4ca9bce29.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/9.png)
 
  **２）限流算法** 
 
@@ -156,29 +156,29 @@ IP流控请求合法性检查：确保IP的访问不会超过QPS的限制，如�
 
 请求合法性检查
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/192701_7aae7c1b_306225.png "f2867a56a7dea94cfd3e268f75d1fffe.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/10.png)
 
 注：IP白名单、IP黑名单及IP的QPS都是在本地内存或本地缓存中，没有远程的ＩＯ操作，因而该校验过程仅会对整体性能产生非常微弱的影响。
 
 请求合法性检查　子逻辑之　IP白名单校验逻辑
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/192727_a94786bb_306225.png "52ff9b97c945d1b5c2a4fced9a3afd84.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/11.png)
 
 请求合法性检查　子逻辑之　IP黑名单校验逻辑
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/192745_f20b2315_306225.png "f958b4e68cbb732547ba22835694e352.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/12.png)
 
 请求合法性检查　子逻辑之　IP QPS超限访问校验及增加IP的访问量
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/192801_22d14474_306225.png "d0b4135bb8d467d0f7b78182e559c9cf.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/13.png)
 
 请求合法性检查　子逻辑之　IP QPS超限访问校验及增加IP的访问量　子逻辑之　当前IP是否超限访问的判断
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/192818_071c9742_306225.png "160917b37474761b2ae164b0ff8c36ae.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/14.png)
 
 从远程更新配置
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/192836_f4538952_306225.png "d84659ecd64dc64128f4faa5648ddda2.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/15.png)
 
  **５）核心配置** 
 
@@ -199,7 +199,7 @@ ip.limiter.core.ipQpsLimitAndBlackIpUpdateTimeInterval = 10000
 
  **１）功能模块** 
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/192914_f3beff84_306225.png "77843af00c6b06f0b67677da6753fead.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/16.png)
 
  **２）核心功能** 
 
@@ -256,11 +256,11 @@ IP的最大QPS设置分为以下几块内容：
 
  **a）注册客户端健康检查** 
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193241_ca4293f8_306225.png "50ff84418f6bb663a169c05d1b5002ec (1).png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/17.png)
 
  **b）系统对自动增加为黑名单的ＩＰ进行自检** 
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193256_68332d73_306225.png "20201110164919389.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/18.png)
 
  **４）核心配置** 
 
@@ -321,39 +321,39 @@ ip.limiter.core.dashboardAddress = 127.0.0.1:8080
  **５）功能界面** 
 （单个应用）分纬度访问TOP统计
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193507_d63e55c5_306225.png "6729de9401e57c8afbb8fec1f6198a10.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/19.png)
 
 （单个应用）秒纬度访问TOP统计
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193523_326b2022_306225.png "48c6fcd3c4af4e47d0393147db3f946a.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/20.png)
 
 （单个应用）IP白名单设置
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193539_50d60a02_306225.png "06bfb57641b2ebeed98edeffeeccd4ad.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/21.png)
 
 （单个应用）IP黑名单设置
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193559_5b0621d8_306225.png "2063f4d2c3710412cb79706f85d0e5a8.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/22.png)
 
 （单个应用）单个IP的QPS设置
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193616_95f44d28_306225.png "29128d757f06d0c00bb3c077291e5b54.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/23.png)
 
 （分局）分纬度访问TOP统计
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193634_d4283692_306225.png "f479e4ca42c727eb0246e34d1b68997a.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/24.png)
 
 （全局）黑名单设置
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193649_2279abf7_306225.png "e995bda907c3fbd1936af7d11f58f548.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/25.png)
 
 （全局）白名单设置
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193706_9e08f76f_306225.png "95d541b0b4e8487d8a1235887f435c5a.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/26.png)
 
 （全局）单个IP的QPS设置
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1231/193715_0dbf879a_306225.png "585204121c8ec2c6d1a540d595858168.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/27.png)
 
 ####  **六、IP限流平台的搭建** 
  **1. 下载源码并安排** 
@@ -501,6 +501,6 @@ Spring Gateway使用的是Netty做为通信模块，不能够像其它应用一�
 
 加入组织：
 
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0108/111503_9d0246bd_306225.png "ip-limiter-group.png")
+![输入图片说明](https://github.com/fenglibin/ip-limiter/blob/master/images/28.png)
 
 群图片如果过期了，请加13265554108，暗号ip-limiter，通过后再拉入群。
