@@ -13,23 +13,26 @@
     <description>The parent project of ip-limiter</description>
 
     <distributionManagement>
-	<repository>
-		<id>nexus-thirdparty</id>
-		<url>http://nexus.inside.imlaidian.com/nexus/content/repositories/thirdparty/</url>
-	</repository>
-	<snapshotRepository>
-		<id>nexus-snapshots</id>
-		<name>Nexus Snapshot Repository</name>
-		<url>http://nexus.inside.imlaidian.com/nexus/content/repositories/snapshots/</url>
-	</snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <name>Release</name>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>ossrh</id>
+            <name>SNAPSHOTS</name>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
+
     <modules>
-        <module>ip-limiter-common</module>
+	<module>ip-limiter-common</module>
 	<module>ip-limiter-core</module>
 	<module>ip-limiter-core-web</module>
 	<module>ip-limiter-core-spring-gateway</module>
-        <module>ip-limiter-dashboard</module>
-	<module>ip-limiter-samples</module>
+	<module>ip-limiter-dashboard</module>
+	<!--module>ip-limiter-samples</module-->
     </modules>
 
 </project>
