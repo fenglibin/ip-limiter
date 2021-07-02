@@ -127,7 +127,7 @@
 			<AppenderRef ref="rollingErrorFile" />
 		</AsyncRoot>
 
-		<AsyncLogger name="com.eeefff.limiter" level="info" includeLocation="true" />
+		<AsyncLogger name="com.eeeffff.limiter" level="info" includeLocation="true" />
 		<AsyncLogger name="com.netflix" level="error" includeLocation="true" />
 		<AsyncLogger name="org.springframework.cloud.netflix" level="error" includeLocation="true" />
 
