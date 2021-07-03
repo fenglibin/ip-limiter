@@ -67,7 +67,6 @@ public class NetUtil {
 	 * 获取Linux下的IP地址
 	 *
 	 * @return IP地址
-	 * @throws SocketException
 	 */
 	public static String getLinuxLocalIp() {
 		String ip = "";

@@ -14,7 +14,6 @@ import redis.clients.jedis.JedisPool;
  * jedis标准模式 （非切片和集群模式）
  *
  * @author jiangchaoo
- * @date 2019-04-15 10:19
  */
 public class JedisClientSingle implements JedisClient {
 

@@ -52,7 +52,7 @@ public class IpQpsRateLimiter {
 	/**
 	 * 重新设置Limit
 	 * 
-	 * @param limiterCache
+	 * @param permitsPerSecondEachIp
 	 */
 	public static void resetLimit(int permitsPerSecondEachIp) {
 		IpQpsRateLimiter.permitsPerSecondEachIp = permitsPerSecondEachIp;

@@ -55,7 +55,6 @@ public class HttpClientUtil {
 	 * 执行Get请求，响应的内容一定要是com.eeeffff.limiter.common.vo.Result格式的。
 	 * 
 	 * @param url
-	 * @return
 	 */
 	public static void doGet(String url, HttpAction action) {
 		// log.info("Http请求的URL：" + url);
@@ -88,7 +87,7 @@ public class HttpClientUtil {
 	 * 
 	 * @param data
 	 * @param url
-	 * @throws UnsupportedEncodingException
+	 * @param action
 	 */
 	public static void doPost(String data, String url, HttpAction action) {
 		final HttpPost httpPost = new HttpPost(url);

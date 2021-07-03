@@ -40,7 +40,6 @@ import redis.clients.jedis.ShardedJedisPool;
  * redis autoConfig
  *
  * @author: fenglibin
- * @Date: 2017-11-03 10:10
  */
 @Slf4j
 @Configuration
@@ -125,7 +124,7 @@ public class RedisAutoConfigure {
 	/**
 	 * RedisTemplate配置
 	 * 
-	 * @param connectionFactory
+	 * @param factory
 	 * @return
 	 */
 	@Bean

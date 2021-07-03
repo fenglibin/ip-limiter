@@ -44,12 +44,14 @@ public class IpLimiterWebConfiguration implements WebMvcConfigurer {
 	private WhiteIpService whiteIpService;
 
 	/**
-	 * 定义的该Bean用于支持Spring MVC框架引入，因为通常Spring MVC都会配置<mvc:annotation-driven/>，<br>
+	 * 定义的该Bean用于支持Spring MVC框架引入，因为通常Spring MVC都会配置<pre>{@code  <mvc:annotation-driven/>}</pre>，<br>
 	 * 当有了该配置后，注入的Intecepter本身是不会生效的，因为该注解会自动配置DefaultAnnotationHandlerMapping<br>
 	 * 与AnnotationMethodHandlerAdapter 两个bean，导致无法指定自定义拦截器。因而要使用IpLimiterInterceptor拦截器，<br>
 	 * 就需求手动在配置文件中引入，引入的步骤如下：<br>
-	 * １、增加IP限流平台包的扫描：<context:component-scan base-package="com.eeeffff.limiter"></context:component-scan><br>
-	 * ２、手动配置拦截器：<mvc:interceptors><ref bean="ipLimiterInterceptor" /></mvc:interceptors><br>
+	 * １、增加IP限流平台包的扫描：<br>
+	 * <pre>{@code  <context:component-scan base-package="com.eeeffff.limiter"></context:component-scan>}</pre><br>
+	 * ２、手动配置拦截器：<br>
+	 * <pre>{@code  <mvc:interceptors><ref bean="ipLimiterInterceptor" /></mvc:interceptors>}</pre><br>
 	 * 这样就可以了
 	 * 
 	 * @return

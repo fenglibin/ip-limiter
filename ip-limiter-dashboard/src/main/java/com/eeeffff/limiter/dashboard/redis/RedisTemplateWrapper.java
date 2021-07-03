@@ -196,8 +196,8 @@ public class RedisTemplateWrapper {
 	 * 从zSet获取值
 	 * 
 	 * @param key
-	 * @param range
-	 * @param limit
+	 * @param page
+	 * @param size
 	 * @return
 	 */
 	public static Set<TypedTuple<Object>> getZSet(String key, int page, int size) {
@@ -226,7 +226,7 @@ public class RedisTemplateWrapper {
 	 * 从hashset中获取指定hashKey数据
 	 * 
 	 * @param key
-	 * @param hashKeys
+	 * @param hashKey
 	 */
 	public static Object hGet(String key, Object hashKey) {
 		List<Object> hashKeyList = new ArrayList<Object>();

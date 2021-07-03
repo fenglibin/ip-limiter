@@ -122,11 +122,7 @@ public class DateUtil {
 	}
 
 	/**
-	 * 解析日期,以所指定的日期格式集合进行解析.<br>
-	 * <p>
-	 * <li>如果满足其中一个日期格式,解析并且返回<br>
-	 * <li>如果没解析成功或者解析错误,则返回null
-	 * </p>
+	 * 解析日期,以所指定的日期格式集合进行解析，如果满足其中一个日期格式,解析并且返回，如果没解析成功或者解析错误,则返回null
 	 * 
 	 * @param stringDate 日期字符串
 	 * @param formates   日期格式的集合
@@ -593,7 +589,7 @@ public class DateUtil {
 	/**
 	 * 获取指定日期10表示的秒时间戳，
 	 * 
-	 * @param date
+	 * @param ymd
 	 * @return
 	 */
 	public static long getUnixTimestamp(String ymd) {

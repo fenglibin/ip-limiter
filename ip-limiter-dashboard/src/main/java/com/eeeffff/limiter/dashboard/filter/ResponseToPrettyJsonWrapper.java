@@ -9,10 +9,8 @@ package com.eeeffff.limiter.dashboard.filter;
  * ClassName:ResponseWrapper <br/>
  * Date: 2018年9月28日 下午3:06:25 <br/>
  * 
- * @author fenglibin1982@163.com
- * @Blog http://blog.csdn.net/fenglibing
- * @version
- * @see
+ * @author fenglibin1982@163.com(http://blog.csdn.net/fenglibing)
+ * 
  */
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -28,10 +26,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
 /**
  * 返回值输出代理类
  * 
- * @Title: ResponseWrapper
- * @Description:
  * @author kokJuis
- * @date 上午9:52:11
  */
 public class ResponseToPrettyJsonWrapper extends HttpServletResponseWrapper {
 

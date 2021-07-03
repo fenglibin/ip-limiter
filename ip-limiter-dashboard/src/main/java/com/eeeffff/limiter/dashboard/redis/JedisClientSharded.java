@@ -14,7 +14,6 @@ import redis.clients.jedis.ShardedJedisPool;
  * 类或方法的功能描述 :TODO
  *
  * @author: fenglibin
- * @date: 2017-12-05 16:07
  */
 public class JedisClientSharded implements JedisClient {
 
@@ -42,10 +41,7 @@ public class JedisClientSharded implements JedisClient {
 	/**
 	 * @param key   键名
 	 * @param value 被保存的值
-	 * @Description: 当字符串类型的时在value后面追加
-	 * @remark
-	 * @author
-	 * @date 2017/11/6:11:23
+	 * @return
 	 */
 	public long append(String key, String value) {
 
@@ -54,12 +50,6 @@ public class JedisClientSharded implements JedisClient {
 		});
 	}
 
-	/**
-	 * @Description: 设置过期时间
-	 * @remark
-	 * @author
-	 * @date 2016-7-8
-	 */
 	@Override
 	public Long expire(String key, int seconds) {
 
@@ -83,13 +73,6 @@ public class JedisClientSharded implements JedisClient {
 		});
 	}
 
-	/**
-	 * @param key 键名
-	 * @Description: 获取数据(string)
-	 * @remark
-	 * @author
-	 * @date 2017/11/6:11:23
-	 */
 	@Override
 	public String get(String key) {
 		return excute((jedis) -> {

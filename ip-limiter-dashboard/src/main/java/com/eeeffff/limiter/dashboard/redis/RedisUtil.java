@@ -26,10 +26,6 @@ public class RedisUtil {
 	 * @param key    [key]
 	 * @param count  [count]
 	 * @param second [second]
-	 * @return void
-	 * @remark 根据key X 秒内最多访问Y次,超过限制则休眠等待
-	 * @author: fenglibin
-	 * @date : 2018/4/27:20:35
 	 */
 	public void requestLimit(String key, int count, int second) {
 
@@ -59,10 +55,8 @@ public class RedisUtil {
 	/**
 	 * get 根据key获取值.
 	 *
-	 * @author jiang chao
 	 * @param key [key]
 	 * @return java.lang.String
-	 * @throws @date 2019/4/15:14:35
 	 */
 	public String get(String key) {
 		return jedisClient.get(key);
@@ -71,10 +65,8 @@ public class RedisUtil {
 	/**
 	 * get 根据key获取值.
 	 *
-	 * @author jiang chao
 	 * @param key [key]
 	 * @return java.lang.byte[]
-	 * @throws @date 2019/4/15:14:35
 	 */
 	public byte[] get(byte[] key) {
 		return jedisClient.get(key);
@@ -83,11 +75,9 @@ public class RedisUtil {
 	/**
 	 * set 设置一个字符串类型的值,如果记录存在则覆盖原有值.
 	 *
-	 * @author jiang chao
 	 * @param key   [key]
 	 * @param value [value]
 	 * @return java.lang.String
-	 * @throws @date 2019/4/15:14:37
 	 */
 	public String set(String key, String value) {
 		return jedisClient.set(key, value);
@@ -99,11 +89,9 @@ public class RedisUtil {
 	 * 如果记录存在则覆盖原有值.
 	 * </p>
 	 * 
-	 * @author jiang chao
 	 * @param key   [key]
 	 * @param value [value]
 	 * @return java.lang.String
-	 * @throws @date 2019/4/15:14:37
 	 */
 	public String set(byte[] key, byte[] value) {
 		return jedisClient.set(key, value);
@@ -119,11 +107,9 @@ public class RedisUtil {
 	 * 如果记录存在则覆盖原有值.
 	 * </p>
 	 *
-	 * @author jiang chao
 	 * @param key   [key]
 	 * @param value [value]
 	 * @return java.lang.String
-	 * @throws @date 2019/4/15:14:37
 	 */
 	public String set(String key, String value, Integer second) {
 		return jedisClient.set(key, value, second);

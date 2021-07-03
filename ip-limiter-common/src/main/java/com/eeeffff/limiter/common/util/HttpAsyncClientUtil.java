@@ -1,6 +1,5 @@
 package com.eeeffff.limiter.common.util;
 
-import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.nio.charset.Charset;
@@ -57,9 +56,8 @@ public class HttpAsyncClientUtil {
 	 * 执行Get请求，响应的内容一定要是com.eeeffff.limiter.common.vo.Result格式的。
 	 * 
 	 * @param url
-	 * @return
+	 * @param action
 	 */
-	@SuppressWarnings("synthetic-access")
 	public static void doGet(String url, HttpAction action) {
 		// log.info("Http请求的URL：" + url);
 		final HttpGet httpGet = new HttpGet(url);
@@ -126,9 +124,8 @@ public class HttpAsyncClientUtil {
 	 * 
 	 * @param data
 	 * @param url
-	 * @throws UnsupportedEncodingException
+	 * @param action
 	 */
-	@SuppressWarnings("synthetic-access")
 	public static void doPost(String data, String url, HttpAction action) {
 		final HttpPost httpPost = new HttpPost(url);
 		httpPost.setHeader(HTTP.CONN_DIRECTIVE, HTTP.CONN_CLOSE);

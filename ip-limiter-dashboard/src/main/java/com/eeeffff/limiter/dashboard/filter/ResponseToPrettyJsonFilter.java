@@ -35,10 +35,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 /**
  * 返回值输出过滤器，这里用来加密返回值
  * 
- * @Title: ResponseFilter
- * @Description:
  * @author kokJuis
- * @date 上午9:52:42
  */
 @WebFilter(urlPatterns = "/*", asyncSupported = true)
 @Component
